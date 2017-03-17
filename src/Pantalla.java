@@ -1,3 +1,10 @@
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Random;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,11 +17,59 @@
  */
 public class Pantalla extends javax.swing.JFrame {
 
+    private ArrayList<JLabel> arraycartas;
+    private ArrayList<JLabel> arrayvasos;
+    private ArrayList<String> arrayimagenes;
+    private Random aleatorio;
     /**
      * Creates new form Pantalla
      */
     public Pantalla() {
         initComponents();
+        
+        aleatorio=new Random();
+        
+        arraycartas=new ArrayList<>();
+        for (int i = 0; i < 12; i++) 
+        {
+            String r_icono = "/Imagenes/atras.png";
+            ImageIcon icono = new ImageIcon(getClass().getResource(r_icono));
+            JLabel v= new JLabel();
+            v.setIcon(icono);
+            jPanel3.add(v);
+            arraycartas.add(v);
+            
+        }
+        arrayvasos=new ArrayList<>();
+        for (int i = 0; i < 12; i++) 
+        {
+            String r_icono = "/Imagenes/vasovacio.png";
+            ImageIcon icono = new ImageIcon(getClass().getResource(r_icono));
+            JLabel v= new JLabel();
+            v.setIcon(icono);
+            jPanel3.add(v);
+            arrayvasos.add(v);
+            
+        }
+        
+        arrayimagenes=new ArrayList<>();
+        arrayimagenes.add("Imagenes/bastos01.png");
+        arrayimagenes.add("Imagenes/bastos02.png");
+        arrayimagenes.add("Imagenes/bastos03.png");
+        arrayimagenes.add("Imagenes/bastos04.png");
+        arrayimagenes.add("Imagenes/bastos05.png");
+        arrayimagenes.add("Imagenes/bastos06.png");
+        arrayimagenes.add("Imagenes/bastos07.png");
+        arrayimagenes.add("Imagenes/bastos08.png");
+        arrayimagenes.add("Imagenes/bastos09.png");
+        arrayimagenes.add("Imagenes/bastos10.png");
+        arrayimagenes.add("Imagenes/bastos11.png");
+        arrayimagenes.add("Imagenes/bastos12.png");
+        
+        
+        
+        
+        
     }
 
     /**
@@ -38,30 +93,6 @@ public class Pantalla extends javax.swing.JFrame {
         lMensaje = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        lCarta1 = new javax.swing.JLabel();
-        lCarta2 = new javax.swing.JLabel();
-        lCarta3 = new javax.swing.JLabel();
-        lCarta4 = new javax.swing.JLabel();
-        lCarta5 = new javax.swing.JLabel();
-        lCarta6 = new javax.swing.JLabel();
-        lCarta7 = new javax.swing.JLabel();
-        lCarta8 = new javax.swing.JLabel();
-        lCarta9 = new javax.swing.JLabel();
-        lCarta10 = new javax.swing.JLabel();
-        lCarta11 = new javax.swing.JLabel();
-        lCarta12 = new javax.swing.JLabel();
-        lVaso1 = new javax.swing.JLabel();
-        lVaso2 = new javax.swing.JLabel();
-        lVaso3 = new javax.swing.JLabel();
-        lVaso4 = new javax.swing.JLabel();
-        lVaso5 = new javax.swing.JLabel();
-        lVaso6 = new javax.swing.JLabel();
-        lVaso7 = new javax.swing.JLabel();
-        lVaso8 = new javax.swing.JLabel();
-        lVAso9 = new javax.swing.JLabel();
-        lVaso10 = new javax.swing.JLabel();
-        lVAso11 = new javax.swing.JLabel();
-        lVaso12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,9 +103,20 @@ public class Pantalla extends javax.swing.JFrame {
         pNorte.add(tfNumeroJugadores);
 
         bFijarJugadores.setText("Fijar jugadores");
+        bFijarJugadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bFijarJugadoresActionPerformed(evt);
+            }
+        });
         pNorte.add(bFijarJugadores);
 
         bDescubrir.setText("Descubrir carta");
+        bDescubrir.setEnabled(false);
+        bDescubrir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bDescubrirActionPerformed(evt);
+            }
+        });
         pNorte.add(bDescubrir);
 
         lTurno.setText("Turno del juagdor: ");
@@ -96,85 +138,29 @@ public class Pantalla extends javax.swing.JFrame {
         jPanel1.add(jPanel2, java.awt.BorderLayout.NORTH);
 
         jPanel3.setLayout(new java.awt.GridLayout(2, 12));
-
-        lCarta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
-        jPanel3.add(lCarta1);
-
-        lCarta2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
-        jPanel3.add(lCarta2);
-
-        lCarta3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
-        jPanel3.add(lCarta3);
-
-        lCarta4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
-        jPanel3.add(lCarta4);
-
-        lCarta5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
-        jPanel3.add(lCarta5);
-
-        lCarta6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
-        jPanel3.add(lCarta6);
-
-        lCarta7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
-        jPanel3.add(lCarta7);
-
-        lCarta8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
-        jPanel3.add(lCarta8);
-
-        lCarta9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
-        jPanel3.add(lCarta9);
-
-        lCarta10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
-        jPanel3.add(lCarta10);
-
-        lCarta11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
-        jPanel3.add(lCarta11);
-
-        lCarta12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.png"))); // NOI18N
-        jPanel3.add(lCarta12);
-
-        lVaso1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vasovacio.png"))); // NOI18N
-        jPanel3.add(lVaso1);
-
-        lVaso2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vasovacio.png"))); // NOI18N
-        jPanel3.add(lVaso2);
-
-        lVaso3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vasovacio.png"))); // NOI18N
-        jPanel3.add(lVaso3);
-
-        lVaso4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vasovacio.png"))); // NOI18N
-        jPanel3.add(lVaso4);
-
-        lVaso5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vasovacio.png"))); // NOI18N
-        jPanel3.add(lVaso5);
-
-        lVaso6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vasovacio.png"))); // NOI18N
-        jPanel3.add(lVaso6);
-
-        lVaso7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vasovacio.png"))); // NOI18N
-        jPanel3.add(lVaso7);
-
-        lVaso8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vasovacio.png"))); // NOI18N
-        jPanel3.add(lVaso8);
-
-        lVAso9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vasovacio.png"))); // NOI18N
-        jPanel3.add(lVAso9);
-
-        lVaso10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vasovacio.png"))); // NOI18N
-        jPanel3.add(lVaso10);
-
-        lVAso11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vasovacio.png"))); // NOI18N
-        jPanel3.add(lVAso11);
-
-        lVaso12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vasovacio.png"))); // NOI18N
-        jPanel3.add(lVaso12);
-
         jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bFijarJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFijarJugadoresActionPerformed
+        if(Integer.valueOf(tfNumeroJugadores.getText())>=2 && Integer.valueOf(tfNumeroJugadores.getText())<13)
+        {
+            bDescubrir.setEnabled(true);
+            bFijarJugadores.setEnabled(false);
+            tfNumeroJugadores.setEnabled(false);
+            lJugador.setText("1");
+        }
+        
+    }//GEN-LAST:event_bFijarJugadoresActionPerformed
+
+    private void bDescubrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDescubrirActionPerformed
+        int n_aleatorio=aleatorio.nextInt(11-0)+0;
+        
+        
+    }//GEN-LAST:event_bDescubrirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -218,34 +204,10 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel lCarta1;
-    private javax.swing.JLabel lCarta10;
-    private javax.swing.JLabel lCarta11;
-    private javax.swing.JLabel lCarta12;
-    private javax.swing.JLabel lCarta2;
-    private javax.swing.JLabel lCarta3;
-    private javax.swing.JLabel lCarta4;
-    private javax.swing.JLabel lCarta5;
-    private javax.swing.JLabel lCarta6;
-    private javax.swing.JLabel lCarta7;
-    private javax.swing.JLabel lCarta8;
-    private javax.swing.JLabel lCarta9;
     private javax.swing.JLabel lJugador;
     private javax.swing.JLabel lMensaje;
     private javax.swing.JLabel lNumeroJugadores;
     private javax.swing.JLabel lTurno;
-    private javax.swing.JLabel lVAso11;
-    private javax.swing.JLabel lVAso9;
-    private javax.swing.JLabel lVaso1;
-    private javax.swing.JLabel lVaso10;
-    private javax.swing.JLabel lVaso12;
-    private javax.swing.JLabel lVaso2;
-    private javax.swing.JLabel lVaso3;
-    private javax.swing.JLabel lVaso4;
-    private javax.swing.JLabel lVaso5;
-    private javax.swing.JLabel lVaso6;
-    private javax.swing.JLabel lVaso7;
-    private javax.swing.JLabel lVaso8;
     private javax.swing.JPanel pNorte;
     private javax.swing.JTextField tfNumeroJugadores;
     // End of variables declaration//GEN-END:variables
