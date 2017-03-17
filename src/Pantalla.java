@@ -21,11 +21,14 @@ public class Pantalla extends javax.swing.JFrame {
     private ArrayList<JLabel> arrayvasos;
     private ArrayList<String> arrayimagenes;
     private Random aleatorio;
+    private int variablevacia;
     /**
      * Creates new form Pantalla
      */
     public Pantalla() {
         initComponents();
+        variablevacia=20;
+        
         
         aleatorio=new Random();
         
@@ -48,23 +51,25 @@ public class Pantalla extends javax.swing.JFrame {
             JLabel v= new JLabel();
             v.setIcon(icono);
             jPanel3.add(v);
+            v.setName("Limpio");
             arrayvasos.add(v);
+            
             
         }
         
         arrayimagenes=new ArrayList<>();
-        arrayimagenes.add("Imagenes/bastos01.png");
-        arrayimagenes.add("Imagenes/bastos02.png");
-        arrayimagenes.add("Imagenes/bastos03.png");
-        arrayimagenes.add("Imagenes/bastos04.png");
-        arrayimagenes.add("Imagenes/bastos05.png");
-        arrayimagenes.add("Imagenes/bastos06.png");
-        arrayimagenes.add("Imagenes/bastos07.png");
-        arrayimagenes.add("Imagenes/bastos08.png");
-        arrayimagenes.add("Imagenes/bastos09.png");
-        arrayimagenes.add("Imagenes/bastos10.png");
-        arrayimagenes.add("Imagenes/bastos11.png");
-        arrayimagenes.add("Imagenes/bastos12.png");
+        arrayimagenes.add("Imagenes/bastos_01.png");
+        arrayimagenes.add("Imagenes/bastos_02.png");
+        arrayimagenes.add("Imagenes/bastos_03.png");
+        arrayimagenes.add("Imagenes/bastos_04.png");
+        arrayimagenes.add("Imagenes/bastos_05.png");
+        arrayimagenes.add("Imagenes/bastos_06.png");
+        arrayimagenes.add("Imagenes/bastos_07.png");
+        arrayimagenes.add("Imagenes/bastos_08.png");
+        arrayimagenes.add("Imagenes/bastos_09.png");
+        arrayimagenes.add("Imagenes/bastos_10.png");
+        arrayimagenes.add("Imagenes/bastos_11.png");
+        arrayimagenes.add("Imagenes/bastos_12.png");
         
         
         
@@ -91,10 +96,11 @@ public class Pantalla extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         lMensaje = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lMensajeInformativo = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(900, 300));
 
         lNumeroJugadores.setText("Número de jugadores:");
         pNorte.add(lNumeroJugadores);
@@ -132,8 +138,8 @@ public class Pantalla extends javax.swing.JFrame {
         lMensaje.setText("Mensaje del juego: ");
         jPanel2.add(lMensaje);
 
-        jLabel2.setText("Descubre una carta... todavía no bebes");
-        jPanel2.add(jLabel2);
+        lMensajeInformativo.setText("Descubre una carta... todavía no bebes");
+        jPanel2.add(lMensajeInformativo);
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.NORTH);
 
@@ -160,6 +166,42 @@ public class Pantalla extends javax.swing.JFrame {
         int n_aleatorio=aleatorio.nextInt(11-0)+0;
         
         
+        int contador=Integer.valueOf(lJugador.getText());
+        if(contador<=Integer.valueOf(tfNumeroJugadores.getText()))
+        {
+            lMensajeInformativo.setText("Descubre una carta... todavía no bebes");
+            String r_icono = arrayimagenes.get(n_aleatorio);
+        
+            arraycartas.get(contador-1).setIcon(new ImageIcon(this.getClass().getResource(r_icono)));
+            
+            
+            
+            if(variablevacia==n_aleatorio)
+            {
+                if(arrayvasos.get(contador-1).getName().equals("Limpio"))
+                {
+                    lMensajeInformativo.setText("La carta es igual que la anterior... ¡Se llena el chupito!");
+                    arrayvasos.get(contador-1).setIcon(new ImageIcon(this.getClass().getResource("Imagenes/vasolleno.png")));
+                    arrayvasos.get(contador-1).setName("Lleno");
+                }
+                else
+                {
+                    lMensajeInformativo.setText("La carta es igual que la anterior... ¡BEBE!");
+                    arrayvasos.get(contador-1).setIcon(new ImageIcon(this.getClass().getResource("Imagenes/vasovacio.png")));
+                    arrayvasos.get(contador-1).setName("Limpio");
+                }
+            }
+            contador=contador+1;
+            
+            lJugador.setText(String.valueOf(contador));
+             
+        }
+        if(Integer.valueOf(lJugador.getText())>Integer.valueOf(tfNumeroJugadores.getText()))
+        {
+            lJugador.setText("1");
+        }
+        
+        variablevacia=n_aleatorio;
     }//GEN-LAST:event_bDescubrirActionPerformed
 
     /**
@@ -200,12 +242,12 @@ public class Pantalla extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bDescubrir;
     private javax.swing.JButton bFijarJugadores;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lJugador;
     private javax.swing.JLabel lMensaje;
+    private javax.swing.JLabel lMensajeInformativo;
     private javax.swing.JLabel lNumeroJugadores;
     private javax.swing.JLabel lTurno;
     private javax.swing.JPanel pNorte;
